@@ -34,7 +34,7 @@ def get_spots():
 
     # Get lat and lng from address
     coordinate_list = []
-    gmaps = googlemaps.Client(key='AIzaSyALma_bIrPD2I6AcEQ5kHreIHVu7qXg8aI')
+    gmaps = googlemaps.Client(key='AIzaSyAXa4pnB8jh7jfG2H6-7MFoV4ndYfeNozY')
     for location in location_list:
         geocode_raw = gmaps.geocode(location['address'])
         #print(geocode_raw)
@@ -52,7 +52,7 @@ def get_spots():
         spots_file.write(json.dumps(coordinate_list))
 
 def download_images_from_json():
-    img_dir = 'imgs'
+    img_dir = 'src/assets/imgs'
     try:
         os.mkdir(img_dir)
     except Exception:
