@@ -4,12 +4,20 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "aws --region ap-southeast-2 --profile skatespots-user s3 sync ./dist s3://covid-skatespots --delete",
+    "get_data": "python3 src/assets/spots.py",
+    "update_deploy": "python3 src/assets/spots.py ; vue-cli-service build ; aws --region ap-southeast-2 --profile skatespots-user s3 sync ./dist s3://covid-skatespots --delete"
   },
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.1.6",
+    "aws-sdk": "^2.751.0",
+    "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
+    "geolib": "^3.3.1",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
